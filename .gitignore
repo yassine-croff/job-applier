@@ -1,0 +1,18 @@
+# Dependencies
+vendor/
+node_modules/
+
+# Laravel
+storage/
+bootstrap/cache/
+.env
+public/hot
+public/storage
+public/build
+
+# Vite
+.vite
+
+# IDE
+.idea/
+.vscode/
