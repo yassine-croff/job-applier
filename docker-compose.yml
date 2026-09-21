@@ -8,7 +8,9 @@ services:
     ports:
       - "8000:80"
     volumes:
+      - ./nginx.conf:/etc/nginx/sites-enabled/default:ro
       - ./:/var/www/html
+      - ./php/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
     depends_on:
       - db
       - redis
@@ -20,8 +22,8 @@ services:
       - DB_USERNAME=sa
       - DB_PASSWORD=your_strong_password_here
       - REDIS_HOST=redis
-      - REDIS_PASSWORD=null
       - REDIS_PORT=6379
+      - DISPLAY=host.docker.internal:0.0
 
   db:
     image: mysql:8.0
@@ -32,8 +34,8 @@ services:
     environment:
       MYSQL_DATABASE: jobapplier
       MYSQL_USER: sa
-      MYSQL_PASSWORD: your_strong_password_here
-      MYSQL_ROOT_PASSWORD: your_strong_password_here
+      MYSQL_PASSWORD: 
+      MYSQL_ROOT_PASSWORD: 
       MYSQL_ROOT_HOST: "%"
 
   redis:
